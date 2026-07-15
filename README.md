@@ -4,14 +4,14 @@ Full-stack organic spice e-commerce app built with React (Vite) + Node.js/Expres
 
 ---
 
-## URLs (Local Dev)
+## Live Demo
 
-| Service      | URL                              |
-|--------------|----------------------------------|
-| Frontend     | http://localhost:5173            |
-| Backend API  | http://localhost:5003            |
-| Admin Panel  | http://localhost:5173/admin      |
-| Admin Login  | http://localhost:5173/admin/login |
+| URL | Link |
+|---|---|
+| **Frontend** | https://countryspices-store.vercel.app/ |
+| **Backend API** | https://countryspices-store.onrender.com/api/products |
+| **Admin Panel** | https://countryspices-store.vercel.app/admin |
+| **Backend Images** | https://countryspices-store.onrender.com/uploads/01.jpg |
 
 ---
 
@@ -21,8 +21,8 @@ Full-stack organic spice e-commerce app built with React (Vite) + Node.js/Expres
 
 | Field    | Value             |
 |----------|-------------------|
-| Email    | admin@countryspices.com |
-| Password | Admin@123         |
+| Email    | Set via `ADMIN_EMAIL` env var |
+| Password | Set via `ADMIN_PASSWORD` env var |
 
 The admin account is created by running the seed script. It has full access to the admin dashboard at `/admin` where you can manage products, orders, users, coupons, and reviews.
 
@@ -42,12 +42,11 @@ No default user is seeded. Users must **register themselves** at `/register` on 
 ### 1. Clone & Install
 
 ```bash
-git clone <repo-url>
-cd countryspices
+git clone https://github.com/Prince000101/countryspices-store.git
+cd countryspices-store
 
 # Backend
 cd backend
-cp .env.example .env   # then edit .env with your values
 npm install
 
 # Frontend
@@ -59,11 +58,11 @@ npm install
 
 ```env
 PORT=5003
-MONGODB_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/CountrySpices
-JWT_SECRET=<generate with: openssl rand -hex 64>
+MONGO_URI=<your-mongodb-atlas-uri>
+JWT_SECRET=<generate-with-openssl-rand-hex-64>
 ADMIN_PASSWORD=<your-admin-password>
-ADMIN_EMAIL=admin@countryspices.com
-CLIENT_URL=http://localhost:5173
+ADMIN_EMAIL=<your-admin-email>
+CLIENT_URL=http://localhost:3003
 ```
 
 ### 3. Seed Database & Run
@@ -76,7 +75,7 @@ npm start       # http://localhost:5003
 
 # Terminal 2 — Frontend
 cd frontend
-npm run dev     # http://localhost:5173
+npm run dev     # http://localhost:3003
 ```
 
 ---
@@ -191,15 +190,25 @@ npm run dev     # http://localhost:5173
 
 ---
 
+## Deployment
+
+| Service | Role | URL | Cost |
+|---|---|---|---|
+| Vercel | Frontend | https://countryspices-store.vercel.app | Free |
+| Render | Backend | https://countryspices-store.onrender.com | Free |
+| MongoDB Atlas | Database | Cloud hosted | Free |
+
+---
+
 ## Environment Variables (`backend/.env`)
 
 ```env
 PORT=5003
-MONGODB_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/CountrySpices
-JWT_SECRET=<random-64-hex>
+MONGO_URI=<your-mongodb-atlas-uri>
+JWT_SECRET=<generate-with-openssl-rand-hex-64>
 ADMIN_PASSWORD=<your-admin-password>
-ADMIN_EMAIL=admin@countryspices.com
-CLIENT_URL=http://localhost:5173
+ADMIN_EMAIL=<your-admin-email>
+CLIENT_URL=http://localhost:3003
 ```
 
 ---
@@ -221,20 +230,6 @@ CLIENT_URL=http://localhost:5173
 
 ---
 
-## Deployment
-
-### Free Tier
-| Service          | Role     | Cost  |
-|------------------|----------|-------|
-| Vercel           | Frontend | Free  |
-| Render           | Backend  | Free  |
-| MongoDB Atlas    | Database | Free  |
-
-### Cheap VPS ($5-6/mo)
-Hetzner CX22, DigitalOcean Basic, or Linode Nanode. Use `pm2` or `docker-compose`.
-
----
-
 ## Troubleshooting
 
 | Problem | Fix |
@@ -243,7 +238,7 @@ Hetzner CX22, DigitalOcean Basic, or Linode Nanode. Use `pm2` or `docker-compose
 | Invalid login | Run `npm run seed` first |
 | Module not found | Run `npm install` in both `backend/` and `frontend/` |
 | Port in use | `lsof -ti:5003 \| xargs kill` (Linux/macOS) or `taskkill /PID <pid>` (Windows) |
-| Images not loading | Update product images to use hosted URLs or configure static file serving for `/images` |
+| Images not loading | Check that `uploads/` folder exists in `backend/` and is not in `.gitignore` |
 
 ---
 
