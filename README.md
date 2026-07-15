@@ -61,7 +61,7 @@ npm install
 PORT=5003
 MONGODB_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/CountrySpices
 JWT_SECRET=<generate with: openssl rand -hex 64>
-ADMIN_PASSWORD=Admin@123
+ADMIN_PASSWORD=<your-admin-password>
 ADMIN_EMAIL=admin@countryspices.com
 CLIENT_URL=http://localhost:5173
 ```
@@ -197,7 +197,7 @@ npm run dev     # http://localhost:5173
 PORT=5003
 MONGODB_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/CountrySpices
 JWT_SECRET=<random-64-hex>
-ADMIN_PASSWORD=Admin@123
+ADMIN_PASSWORD=<your-admin-password>
 ADMIN_EMAIL=admin@countryspices.com
 CLIENT_URL=http://localhost:5173
 ```
